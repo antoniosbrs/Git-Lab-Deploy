@@ -6,6 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+      
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v3
+
       - name: Build image
         run: |
           docker build -t myapp:latest .
